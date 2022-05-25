@@ -71,3 +71,59 @@ if(top => offset && top < offset + height){
   },
  },
 });
+
+fetch("products.json")
+    .then((res) => res.json())
+    .then((data) => cart.callDishes(data.dishes))
+
+.catch((err) => console.log(err + "this is an error message"));
+
+class Cart {
+    createDishDiv(dishes) {
+        let box = "";
+        dishes.forEach((dish) => {
+            let img = dish.img;
+            let name = dish.name;
+            let price = dish.price;
+            box += `<div class="box">
+                <a href="#"><i class="fa fa-heart"></i></a>
+                <a href="#"><i class="fa fa-eye"></i></a>
+                <img src=${img}alt="product${name}">
+                <h3>${name}</h3>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-alt"></i>
+                </div>
+                <span>${price}</span>
+                <a href="#" class="btn orderbtn" data-id=${dish.id}>order here</a>
+            </div>`;
+        });
+        boxContainer.innerHTML = box;
+    }
+
+    storeDishes(item) {
+        localStorage.setItem("item", JSON.stringify(item));
+    }
+    callDishes(dishes) {
+        this.createDishDiv(dishes);
+        this.storeDishes(dishes);
+    }
+    getOrderBtn() {
+        let orderBtn = document.querySelectorAll("orderbtn");
+        console.log(orderBtn);
+        orderBtn.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.target.preventDefault;
+                e.target.innerText = "Ordered";
+                console.log(e.target);
+            });
+        });
+    }
+}
+let cart = new Cart();
+window.addEventListener("DOMContentLoaded", () => {
+    cart.callDishes(dishes).then(() => cart.getOrderBtn());
+});
