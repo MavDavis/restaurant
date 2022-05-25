@@ -12,7 +12,8 @@
      menu.classList.remove('fa-times');
      navbar.classList.remove('active');
 
- section.forEach(sec =>{
+ /*
+section.forEach(sec =>{
 let top = window.scrollY;
 let height = sec.offsetHeight;
 let offset = sec.offsetTop - 150;
@@ -71,6 +72,7 @@ if(top => offset && top < offset + height){
  },
 });
 
+*/
 fetch("products.json")
     .then((res) => res.json())
     .then((data) => cart.callDishes(data.dishes))
