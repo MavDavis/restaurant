@@ -1,0 +1,39 @@
+{
+    "dishes": [{
+            "img": "'./images/Meatpie2.jpg'",
+            "name": "Meatpie",
+            "price": "<i class='fa fa-&#8358'>&#8358;500</i>",
+            "id": 1
+        },
+        {
+            "img": "'./images/shawarma.jpg'",
+            "name": "Shawarma",
+            "price": "<i class='fa fa-&#8358'>&#8358;2500</i>",
+            "id": 2
+        },
+        {
+            "img": "'./images/chin-chin.jpg'",
+            "name": "Tasty Chin-chin",
+            "price": "<i class='fa fa-&#8358'>&#8358;900</i>",
+            "id": 3
+        },
+        {
+            "img": "'./images/bitterleaf.jfif'",
+            "name": "Bitterleaf(onugbu) soup",
+            "price": "<i class='fa fa-&#8358'>&#8358;2000</i>",
+            "id": 4
+        },
+        {
+            "img": "'./images/cupcakes.jpg'",
+            "name": "Cup-cakes",
+            "price": "<i class='fa fa-&#8358'>&#8358;500</i>",
+            "id": 5
+        },
+        {
+            "img": "'./images/doughnut.jpg'",
+            "name": "Doughnut",
+            "price": "<i class='fa fa-&#8358'>&#8358;400</i>",
+            "id": 6
+        }
+    ]
+}
