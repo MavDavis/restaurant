@@ -21,7 +21,7 @@ let id = sec.getAttribute('id');
 if(top => offset && top < offset + height){
    navLinks.forEach( links =>{
       links.classList.remove('active');
-      document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
+//       document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
 
    });
 };
