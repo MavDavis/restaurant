@@ -22,7 +22,7 @@ let id = sec.getAttribute('id');
 if(top => offset && top < offset + height){
    navLinks.forEach( links =>{
       links.classList.remove('active');
-//       document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
+    document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
 
    });
 };
@@ -33,7 +33,7 @@ if(top => offset && top < offset + height){
  }
  document.querySelector('#close').onclick = () =>{
     document.querySelector('#search-form').classList.remove('active');
- }
+ }*/
  var swiper = new Swiper(".home-slider",{
     spaceBetween: 30,
     centeredSlides: true,
@@ -72,7 +72,7 @@ if(top => offset && top < offset + height){
  },
 });
 
-*/
+
 fetch("products.json")
     .then((res) => res.json())
     .then((data) => cart.callDishes(data.dishes))
