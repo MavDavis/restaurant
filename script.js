@@ -50,16 +50,24 @@ class Cart {
         }
         boxContainer.innerHTML = box;
     }
-
+    removeButton() {
+        const removeBtn = [...document.querySelectorAll(".remove-btn")];
+        removeBtn.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                let id = e.target.dataset.id;
+                let fetchedItem = JSON.parse(localStorage.getItem("cartitem"));
+                let newitem = fetchedItem.filter((item) => item.id != id);
+                console.log(newitem);
+                this.setCartToStorage(newitem);
+                this.getCartFromLocaStorage();
+            });
+        });
+    }
     storeDishes(item) {
         localStorage.setItem("item", JSON.stringify(item));
     }
     setCartToStorage(item) {
-        if (localStorage.key("cartitem") == "") {
-            return;
-        } else {
-            localStorage.setItem("cartitem");
-        }
+        localStorage.setItem("cartitem", JSON.stringify(item));
     }
     getCartFromLocaStorage() {
         if (localStorage.key("cartitem") != "") {
@@ -70,7 +78,7 @@ class Cart {
         }
     }
     updateDisplay(fetchedItem) {
-        let CartDiv = document.getElementById("cartDiv");
+        let CartDiv = document.getElementById("itemDiv");
         let user = "";
         fetchedItem.forEach((displayCart) => {
             user += `
@@ -82,7 +90,7 @@ class Cart {
                 <p class="name">${displayCart.names}</p>
                 <p class="price">${displayCart.price}</p>
             </div>
-            <div class="remove-btn btn">remove</div>
+           <button class="btn remove-btn" data-id="${displayCart.id}">remove item</button>
         </div>
        
             `;
@@ -102,7 +110,7 @@ class Cart {
                 event.target.innerText = "In Cart";
                 event.target.disabled = true;
                 let fetchProductForCart = new FetchProduct();
-                let cartProducts = fetchProductForCart
+                fetchProductForCart
                     .getProducts()
                     .then((dishes) => this.CartCallDishes(id, dishes));
             });
@@ -125,5 +133,6 @@ window.addEventListener("DOMContentLoaded", () => {
         .then(() => {
             cart.getOrderBtn();
             cart.getCartFromLocaStorage();
-        });
+        })
+        .then(() => cart.removeButton());
 });
