@@ -322,7 +322,8 @@ header .navbar.active {
     color: var(--green);
 }
 
-.dishes .box-container .box span {
+.dishes .box-container .box span,
+.price {
     padding: 1rem 0;
     color: var(--green);
     font-weight: bolder;
@@ -579,6 +580,57 @@ header .navbar.active {
     color: var(--green);
 }
 
+.cart-div {
+    transform: translateX(50%);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    z-index: 3000;
+    background: #eee;
+    padding: 1.5rem;
+}
+
+.close-cart {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.7rem;
+    color: #fff;
+    border-radius: 50%;
+    background: var(--light-color);
+    text-align: center;
+}
+
+#itemDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+#itemDiv .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+#itemDiv .item .img img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
 
 /* media queries */
 
@@ -645,6 +697,13 @@ header .navbar.active {
     .about .row .content h3 {
         font-size: 2rem;
     }
+    #itemDiv .item {
+        margin: 2rem auto;
+        width: 600px;
+    }
+    .cart-div {
+        transform: translateX(0);
+    }
 }
 
 @media (max-width: 450px) {
@@ -658,17 +717,8 @@ header .navbar.active {
     .order form .inputBox .input {
         width: 100%;
     }
-}
-
-.cart-div {
-    transform: translateX(70%);
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
-    z-index: 3000;
-    background: rgb(231, 226, 221);
-    padding: 1.5rem;
+    #itemDiv .item {
+        margin: auto;
+        max-width: 300px;
+    }
 }

@@ -76,6 +76,7 @@ class Cart {
             const buttons2 = [...document.querySelectorAll(".orderbtn")];
             buttons2.forEach((btn) => {});
         }
+        this.removeButton();
     }
     updateDisplay(fetchedItem) {
         let CartDiv = document.getElementById("itemDiv");
@@ -87,8 +88,8 @@ class Cart {
                 <img src=${displayCart.img} alt="">
             </div>
             <div class="details">
-                <p class="name">${displayCart.names}</p>
-                <p class="price">${displayCart.price}</p>
+                <p class="name">${displayCart.name}</p>
+                <p class="price">&#8358;${displayCart.price}</p>
             </div>
            <button class="btn remove-btn" data-id="${displayCart.id}">remove item</button>
         </div>
@@ -118,12 +119,12 @@ class Cart {
     }
     CartCallDishes(id, dishes) {
         let perCartItem = dishes.find((perCart) => perCart.id == id);
-        cart = [...cart, perCartItem];
+        // cart = [...cart, perCartItem]
+        cart.push(perCartItem);
         this.setCartToStorage(cart);
         this.getCartFromLocaStorage();
     }
 }
-
 window.addEventListener("DOMContentLoaded", () => {
     let cart = new Cart();
     let fetchProduct = new FetchProduct();
@@ -133,6 +134,6 @@ window.addEventListener("DOMContentLoaded", () => {
         .then(() => {
             cart.getOrderBtn();
             cart.getCartFromLocaStorage();
-        })
-        .then(() => cart.removeButton());
+        });
+    // .then(() => cart.removeButton());
 });
