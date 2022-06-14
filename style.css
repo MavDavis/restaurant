@@ -581,6 +581,10 @@ header .navbar.active {
 }
 
 .cart-div {
+    transform: translateX(0);
+}
+
+.updatedCartDiv {
     transform: translateX(50%);
     position: fixed;
     top: 0;
@@ -701,9 +705,6 @@ header .navbar.active {
         margin: 2rem auto;
         width: 600px;
     }
-    .cart-div {
-        transform: translateX(0);
-    }
 }
 
 @media (max-width: 450px) {
@@ -720,5 +721,8 @@ header .navbar.active {
     #itemDiv .item {
         margin: auto;
         max-width: 300px;
+    }
+    .updatedCartDiv {
+        transform: translateX(0);
     }
 }

@@ -1,12 +1,28 @@
 let menu = document.querySelector("#menu-bars");
 let navbar = document.querySelector(".navbar");
 let boxContainer = document.querySelector(".box-container");
+let MainCartDiv = document.getElementById("cartDiv");
 let buttonsDom = [];
+let closeCart = document.querySelector(".close-cart");
+let cartBasket = document.getElementById("cart-basket");
+
 let cart = [];
 menu.onclick = () => {
     menu.classList.toggle("fa-times");
     navbar.classList.toggle("active");
 };
+
+function toggleCartDiv() {
+    if (MainCartDiv.classList.contains("cart-div")) {
+        MainCartDiv.classList.remove("cart-div");
+        MainCartDiv.classList.add("updatedCartDiv");
+    } else {
+        MainCartDiv.classList.remove("updatedCartDiv");
+        MainCartDiv.classList.add("cart-div");
+    }
+}
+cartBasket.addEventListener("click", toggleCartDiv);
+closeCart.addEventListener("click", toggleCartDiv);
 let section = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll("header .navbar a");
 
@@ -57,9 +73,17 @@ class Cart {
                 let id = e.target.dataset.id;
                 let fetchedItem = JSON.parse(localStorage.getItem("cartitem"));
                 let newitem = fetchedItem.filter((item) => item.id != id);
-                console.log(newitem);
+
                 this.setCartToStorage(newitem);
                 this.getCartFromLocaStorage();
+                let allOrderBtn = document.querySelectorAll(".orderbtn");
+                let allOrderBtnID = allOrderBtn.forEach((btn) => {
+                    if (btn.dataset.id == id) {
+                        btn.disabled = false;
+                        btn.innerText = "order here";
+                        console.log(newitem);
+                    }
+                });
             });
         });
     }
@@ -120,7 +144,9 @@ class Cart {
     CartCallDishes(id, dishes) {
         let perCartItem = dishes.find((perCart) => perCart.id == id);
         // cart = [...cart, perCartItem]
-        cart.push(perCartItem);
+
+        !perCartItem && cart.push(perCartItem);
+
         this.setCartToStorage(cart);
         this.getCartFromLocaStorage();
     }
