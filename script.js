@@ -73,7 +73,7 @@ class Cart {
                 let id = e.target.dataset.id;
                 let fetchedItem = JSON.parse(localStorage.getItem("cartitem"));
                 let newitem = fetchedItem.filter((item) => item.id != id);
-
+                console.log(newitem);
                 this.setCartToStorage(newitem);
                 this.getCartFromLocaStorage();
                 let allOrderBtn = document.querySelectorAll(".orderbtn");
@@ -133,7 +133,7 @@ class Cart {
             btn.addEventListener("click", (event) => {
                 let id = btn.dataset.id;
                 event.target.innerText = "In Cart";
-                event.target.disabled = true;
+                // event.target.disabled = true;
                 let fetchProductForCart = new FetchProduct();
                 fetchProductForCart
                     .getProducts()
@@ -143,10 +143,7 @@ class Cart {
     }
     CartCallDishes(id, dishes) {
         let perCartItem = dishes.find((perCart) => perCart.id == id);
-        // cart = [...cart, perCartItem]
-
-        !perCartItem && cart.push(perCartItem);
-
+        cart = [...cart, perCartItem];
         this.setCartToStorage(cart);
         this.getCartFromLocaStorage();
     }
@@ -161,5 +158,4 @@ window.addEventListener("DOMContentLoaded", () => {
             cart.getOrderBtn();
             cart.getCartFromLocaStorage();
         });
-    // .then(() => cart.removeButton());
 });

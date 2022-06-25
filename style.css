@@ -409,6 +409,10 @@ header .navbar.active {
 
 /* review */
 
+#review {
+    max-width: 100%;
+}
+
 .review .slide {
     padding: 2rem;
     box-shadow: var(--box-shadow);
@@ -582,9 +586,11 @@ header .navbar.active {
 
 .cart-div {
     transform: translateX(0);
+    display: none;
 }
 
 .updatedCartDiv {
+    display: block;
     transform: translateX(50%);
     position: fixed;
     top: 0;
