@@ -713,6 +713,12 @@ header .navbar.active {
     }
 }
 
+@media (max-width: 500px) {
+    .updatedCartDiv {
+        transform: translateX(0);
+    }
+}
+
 @media (max-width: 450px) {
     html {
         font-size: 50%;
@@ -727,8 +733,5 @@ header .navbar.active {
     #itemDiv .item {
         margin: auto;
         max-width: 300px;
-    }
-    .updatedCartDiv {
-        transform: translateX(0);
     }
 }
