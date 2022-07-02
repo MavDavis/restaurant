@@ -133,7 +133,7 @@ class Cart {
             btn.addEventListener("click", (event) => {
                 let id = btn.dataset.id;
                 event.target.innerText = "In Cart";
-                // event.target.disabled = true;
+                event.target.disabled = true;
                 let fetchProductForCart = new FetchProduct();
                 fetchProductForCart
                     .getProducts()
@@ -143,7 +143,9 @@ class Cart {
     }
     CartCallDishes(id, dishes) {
         let perCartItem = dishes.find((perCart) => perCart.id == id);
-        cart = [...cart, perCartItem];
+        if (!cart.includes(perCartItem)) {
+            cart.push(perCartItem);
+        }
         this.setCartToStorage(cart);
         this.getCartFromLocaStorage();
     }
